@@ -1,1 +1,197 @@
+⚡ PowerShell – Guide Complet Débutant à Intermédiaire
+📌 Description
 
+Ce dépôt regroupe mes notes, exercices et scripts réalisés dans le cadre de mon apprentissage de PowerShell, un langage de scripting et shell orienté objet développé par Microsoft.
+
+PowerShell est utilisé pour :
+
+l’administration système Windows
+l’automatisation de tâches
+la gestion des réseaux et services
+🎯 Objectifs d’apprentissage
+Comprendre les bases du langage PowerShell
+Utiliser le terminal efficacement
+Manipuler fichiers et dossiers
+Créer des scripts (.ps1)
+Automatiser des tâches simples
+Comprendre les objets PowerShell (concept clé 🔥)
+📂 Structure du projet
+powershell/
+├── notes/
+│   ├── introduction.md
+│   ├── commandes.md
+│   └── concepts.md
+├── scripts/
+│   ├── q1.ps1   # Informations système
+│   ├── q2.ps1   # Services actifs
+│   ├── q3.ps1   # Calculs
+│   ├── affichage.ps1
+│   └── saisie.ps1
+└── README.md
+🧠 1. Concepts de base
+🔹 PowerShell vs autres shells
+Remplace le batch Windows
+Comparable à Bash (Linux), mais :
+Bash → texte
+PowerShell → objets
+🔹 Syntaxe
+Une instruction = une ligne
+Blocs = { }
+🔹 Commentaires
+# Commentaire simple
+
+<#
+Commentaire
+multiligne
+#>
+💻 2. Variables
+$prenom = "Karine"
+$age = 25
+🔹 Règles
+Toujours commencer par $
+camelCase recommandé
+🌍 Variables d’environnement
+Write-Output $env:USERNAME
+Write-Output $env:COMPUTERNAME
+🖥️ 3. Affichage
+Write-Host "Bonjour"
+Write-Output "Hello World"
+✔ Différence importante
+Write-Host → affichage direct console
+Write-Output → retourne un objet (important pour les pipes)
+🔹 Interpolation
+$nom = "Eric"
+Write-Host "Bonjour $nom"
+Write-Host "2 + 3 = $(2 + 3)"
+🔹 Saut de ligne
+Write-Host "`nNouvelle ligne"
+⌨️ 4. Saisie utilisateur
+$nom = Read-Host "Entrez votre nom"
+🔹 Conversion de type (TRÈS IMPORTANT)
+$age = [int](Read-Host "Entrez votre âge")
+$prix = [double](Read-Host "Entrez un prix")
+🧮 5. Calculs
+$a = 5
+$b = 3
+
+Write-Host "Somme : $( $a + $b )"
+Write-Host "Produit : $( $a * $b )"
+📁 6. Manipulation fichiers et dossiers
+🔹 Créer
+New-Item fichier.txt
+New-Item dossier -ItemType Directory
+🔹 Naviguer
+Set-Location dossier
+Set-Location ..
+🔹 Lister
+Get-ChildItem
+🔹 Supprimer
+Remove-Item fichier.txt
+Remove-Item dossier -Recurse
+🔹 Copier / déplacer
+Copy-Item fichier.txt copie.txt
+Move-Item copie.txt dossier/
+⚠️ Important
+
+Éviter dans les scripts :
+
+cd, ls, mkdir (alias)
+
+Utiliser :
+
+Set-Location
+Get-ChildItem
+New-Item
+🔗 7. Pipes et filtrage
+🔹 Concept
+
+Le symbole | permet d’envoyer la sortie d’une commande vers une autre.
+
+Get-Service | Where-Object Status -eq "Running"
+🧠 8. Objets (LE PLUS IMPORTANT)
+
+PowerShell manipule des objets :
+
+Get-Date | Format-Table
+🔹 Accès aux propriétés
+$date = Get-Date
+Write-Output $date.DayOfWeek
+🔍 9. Cmdlets
+
+Format standard :
+
+Verbe-Nom
+
+Exemples :
+
+Get-Service
+Set-Location
+New-Item
+Remove-Item
+📦 10. Installation de programmes
+winget install Git.Git
+🧪 11. Scripts réalisés
+🔹 q1.ps1 – Informations système
+Nom utilisateur
+Date actuelle
+🔹 q2.ps1 – Services actifs
+Get-Service | Where-Object Status -eq "Running"
+🔹 q3.ps1 – Calculs
+Somme
+Différence
+Produit
+Quotient
+▶️ 12. Exécution des scripts
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+./q1.ps1
+🔥 13. Bonnes pratiques (IMPORTANT POUR EXAM)
+
+✔ Toujours convertir les entrées utilisateur
+✔ Utiliser $() pour calculs dans string
+✔ Comprendre les objets (clé de PowerShell)
+✔ Utiliser les cmdlets officielles (pas les alias)
+✔ Structurer ton code clairement
+
+🚀 14. Notions ajoutées (niveau +)
+🔹 Conditions (aperçu)
+if ($age -ge 18) {
+    Write-Host "Majeur"
+}
+🔹 Boucles (aperçu)
+for ($i = 0; $i -lt 5; $i++) {
+    Write-Host $i
+}
+🔹 Aide intégrée
+Get-Help Get-Service
+🔹 Trouver une commande
+Get-Command *service*
+🛠️ Outils recommandés
+Visual Studio Code
+Terminal Windows
+PowerShell ISE
+📈 Évolution du projet
+Scripts d’automatisation
+Administration réseau
+Gestion de serveurs
+Cloud et cybersécurité
+👨‍💻 Auteur
+
+Étudiant en administration systèmes et réseaux
+Objectif : devenir expert en infrastructure IT, cloud et sécurité
+
+📄 Licence
+
+Projet éducatif – usage personnel
+
+💡 Conclusion :
+Ce dépôt démontre ma capacité à :
+
+utiliser PowerShell efficacement
+automatiser des tâches
+comprendre les systèmes Windows
+travailler avec des objets (niveau avancé 🔥)
+
+✅ Si tu veux aller encore plus loin, je peux :
+
+te générer les scripts q1, q2, q3 parfaitement codés
+transformer ce README en portfolio professionnel (niveau CV DevOps / SysAdmin)
